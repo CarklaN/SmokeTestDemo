@@ -1,0 +1,138 @@
+[1mdiff --git a/bin/spec/smoke_spec.rb b/bin/spec/smoke_spec.rb[m
+[1mindex 13edc0c..699d963 100644[m
+[1m--- a/bin/spec/smoke_spec.rb[m
+[1m+++ b/bin/spec/smoke_spec.rb[m
+[36m@@ -14,83 +14,73 @@[m [mdescribe 'Smoke Test Cases: ' do[m
+         @browser.close[m
+     end[m
+ [m
+[31m-     context 'Login with valid credentials' do[m
+[31m-        it 'submit valid email and password' do [m
+[31m-            Objects.send_credentials(@browser,'proba99@gmail.com', 'test55')[m
+[31m-        end[m
+[31m-[m
+[32m+[m[32m  context 'Login with valid credentials' do[m
+[32m+[m[41m  [m
+[32m+[m[32m    it 'submit valid email and password' do[m[41m [m
+[32m+[m[32m      Objects.send_credentials(@browser,'proba99@gmail.com', 'test55')[m
+[32m+[m[32m    end[m
+         sleep 3[m
+ [m
+[31m-        it 'verify if user is logged in' do[m
+[31m-            expect(@browser.h1(class: 'page-heading').text).to eql('MY ACCOUNT')[m
+[31m-[m
+[31m-     end[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-       [m
+[31m-[m
+[31m-    context 'Adding item to the cart' do [m
+[31m-[m
+[31m-        it 'return to the home page' do [m
+[31m-            Objects.navigate_to_home(@browser)[m
+[31m-        end[m
+[31m-[m
+[31m-        it 'Click on the item' do[m
+[31m-            Objects.click_on_the_item(@browser, 'Faded Short Sleeve T-shirts')[m
+[31m-[m
+[31m-        end[m
+[31m-[m
+[31m-        it 'Choose product quantity' do [m
+[31m-            Objects.quantity(@browser, 3)[m
+[31m-        end[m
+[32m+[m[32m    it 'verify if user is logged in' do[m
+[32m+[m[32m      expect(@browser.h1(class: 'page-heading').text).to eql('MY ACCOUNT')[m
+[32m+[m[32m    end[m
+[32m+[m[32m  end[m
+ [m
+[31m-        it 'Choose product size' do [m
+[31m-            Objects.size(@browser, 'm')[m
+[31m-        end[m
+[32m+[m[32m  context 'Adding item to the cart' do[m[41m [m
+ [m
+[31m-        it 'Choose product color' do[m
+[31m-            Objects.color(@browser, 'Orange')[m
+[31m-        end[m
+[32m+[m[32m    it 'return to the home page' do[m[41m [m
+[32m+[m[32m      Objects.navigate_to_home(@browser)[m
+[32m+[m[32m    end[m
+ [m
+[31m-        it 'Add choosen product to the cart' do [m
+[31m-            Objects.cart(@browser)[m
+[31m-        end[m
+[32m+[m[32m    it 'Click on the item' do[m
+[32m+[m[32m      Objects.click_on_the_item(@browser, 'Faded Short Sleeve T-shirts')[m
+[32m+[m[32m    end[m
+ [m
+[31m-        it 'verify if item was added to the cart' do[m
+[31m-            expect(@browser.h2.text.include?("Product successfully added to your shopping cart")).to be true[m
+[32m+[m[32m    it 'Choose product quantity' do[m[41m [m
+[32m+[m[32m      Objects.quantity(@browser, 3)[m
+[32m+[m[32m    end[m
+ [m
+[31m-     end[m
+[32m+[m[32m    it 'Choose product size' do[m[41m [m
+[32m+[m[32m      Objects.size(@browser, 'm')[m
+[32m+[m[32m    end[m
+ [m
+[32m+[m[32m    it 'Choose product color' do[m
+[32m+[m[32m      Objects.color(@browser, 'Orange')[m
+     end[m
+ [m
+[31m-    context 'Proceeding with checkout' do [m
+[32m+[m[32m    it 'Add choosen product to the cart' do[m[41m [m
+[32m+[m[32m      Objects.cart(@browser)[m
+[32m+[m[32m    end[m
+ [m
+[31m-        it 'Click on proceed to checkout button on pop-up window' do[m
+[31m-            Objects.button_popup(@browser)[m
+[31m-            end[m
+[32m+[m[32m    it 'verify if item was added to the cart' do[m
+[32m+[m[32m      expect(@browser.h2.text.include?("Product successfully added to your shopping cart")).to be true[m
+[32m+[m[32m    end[m
+ [m
+[31m-        it 'Click on proceed to checkout 2 times on check out page' do [m
+[31m-            Objects.button2(@browser)[m
+[32m+[m[32m  end[m
+ [m
+[31m-        end[m
+[32m+[m[32m  context 'Proceeding with checkout' do[m[41m [m
+ [m
+[31m-        it 'Accept terms and conditions and proceed to payment' do [m
+[31m-            Objects.accept_terms_checkout(@browser)[m
+[31m-        end[m
+[32m+[m[32m    it 'Click on proceed to checkout button on pop-up window' do[m
+[32m+[m[32m      Objects.button_popup(@browser)[m
+[32m+[m[32m     end[m
+ [m
+[31m-        it 'Confirm my order' do[m
+[31m-            Objects.payment(@browser, 'bankwire')[m
+[31m-        end[m
+[32m+[m[32m     it 'Click on proceed to checkout 2 times on check out page' do[m[41m [m
+[32m+[m[32m      Objects.button2(@browser)[m
+[32m+[m[32m     end[m
+ [m
+[31m-        it 'Display order confirmation' do [m
+[31m-        end[m
+[32m+[m[32m     it 'Accept terms and conditions and proceed to payment' do[m[41m [m
+[32m+[m[32m      Objects.accept_terms_checkout(@browser)[m
+[32m+[m[32m     end[m
+ [m
+[31m-        it "shows 'Order confirmation.' pop-up message" do[m
+[31m-            expect(@browser.h1(class: 'page-heading').text).to eql('ORDER CONFIRMATION')[m
+[31m-        end[m
+[32m+[m[32m     it 'Confirm my order' do[m
+[32m+[m[32m      Objects.payment(@browser, 'bankwire')[m
+[32m+[m[32m     end[m
+ [m
+[32m+[m[32m     it 'Display order confirmation' do[m[41m [m
+[32m+[m[32m     end[m
+ [m
+[31m-    end[m
+[31m-end[m
+[32m+[m[32m     it "shows 'Order confirmation.' pop-up message" do[m
+[32m+[m[32m      expect(@browser.h1(class: 'page-heading').text).to eql('ORDER CONFIRMATION')[m
+[32m+[m[32m     end[m
+[32m+[m[32m  end[m
+ end[m
