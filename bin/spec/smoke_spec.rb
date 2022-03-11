@@ -14,21 +14,18 @@ describe 'Smoke Test Cases: ' do
         @browser.close
     end
 
-     context 'Login with valid credentials' do
+    context 'Login with valid credentials' do
+     
         it 'submit valid email and password' do 
             Objects.send_credentials(@browser,'proba99@gmail.com', 'test55')
         end
+    end
 
         sleep 3
 
         it 'verify if user is logged in' do
             expect(@browser.h1(class: 'page-heading').text).to eql('MY ACCOUNT')
-
      end
-
-
-
-       
 
     context 'Adding item to the cart' do 
 
@@ -59,8 +56,7 @@ describe 'Smoke Test Cases: ' do
 
         it 'verify if item was added to the cart' do
             expect(@browser.h2.text.include?("Product successfully added to your shopping cart")).to be true
-
-     end
+        end
 
     end
 
@@ -68,11 +64,10 @@ describe 'Smoke Test Cases: ' do
 
         it 'Click on proceed to checkout button on pop-up window' do
             Objects.button_popup(@browser)
-            end
+        end
 
         it 'Click on proceed to checkout 2 times on check out page' do 
             Objects.button2(@browser)
-
         end
 
         it 'Accept terms and conditions and proceed to payment' do 
@@ -89,8 +84,5 @@ describe 'Smoke Test Cases: ' do
         it "shows 'Order confirmation.' pop-up message" do
             expect(@browser.h1(class: 'page-heading').text).to eql('ORDER CONFIRMATION')
         end
-
-
     end
-end
 end
